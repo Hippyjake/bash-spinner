@@ -44,8 +44,8 @@ function _spinner() {
 
             # start spinner
             i=1
-            sp='\|/-'
-            delay=${SPINNER_DELAY:-0.15}
+            sp='⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏'
+            delay=${SPINNER_DELAY:-0.05}
 
             while :
             do
@@ -78,6 +78,7 @@ function _spinner() {
 }
 
 function start_spinner {
+tput civis
     # $1 : msg to display
     _spinner "start" "${1}" &
     # set global spinner pid
@@ -86,6 +87,7 @@ function start_spinner {
 }
 
 function stop_spinner {
+tput cnorm
     # $1 : command exit status
     _spinner "stop" $1 $_sp_pid
     unset _sp_pid
